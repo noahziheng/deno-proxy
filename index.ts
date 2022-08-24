@@ -7,6 +7,8 @@ serve(async (req: Request) => {
     const newUrl = new URL(req.url);
     newUrl.host = TARGET_HOST;
     const resp = await fetch(newUrl, newReq);
-    console.log(req, resp);
+    if (req.headers['x-tt-debug'] === 'true') {
+        console.log(TARGET_HOST, req, resp);
+    }
     return resp;
 });
