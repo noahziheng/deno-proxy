@@ -6,7 +6,7 @@ serve(async (req: Request) => {
     const newReq = req.clone();
     const newUrl = new URL(req.url);
     newUrl.host = TARGET_HOST;
-    const resp = fetch(newUrl, newReq);
+    const resp = await fetch(newUrl, newReq);
     console.log(req, resp);
     return resp;
 });
